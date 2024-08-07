@@ -18,7 +18,7 @@ namespace SemanticSearch
     /// </summary>
     public partial class MainWindow : Window
     {
-        double VectorValue = 0.55;
+        double? VectorValue = 0.55;
 
         readonly static LocalEmbedder Embedder = new LocalEmbedder(caseSensitive: false);
         public static Dictionary<int, EmbeddingF32> ProductEmbeddings { get; set; } = new Dictionary<int, EmbeddingF32>();
@@ -63,17 +63,18 @@ namespace SemanticSearch
             return false;
         }
 
-        private void vectortextBox_KeyDown(object sender, KeyEventArgs e)
+        private void vectortextBox_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            VectorValue = vectortextBox.Value;
+            if(grid != null && grid.View != null)
             {
-                VectorValue = Convert.ToDouble((string)vectortextBox.Text);
                 grid.View.Filter = FilterRecords;
                 grid.View.RefreshFilter();
             }
+
         }
     }
-  
+
     public static class SmartFilterRenderer
     {
         public static float Similarity<TEmbedding>(TEmbedding a, TEmbedding b) where TEmbedding : IEmbedding<TEmbedding>

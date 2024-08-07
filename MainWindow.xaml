@@ -13,12 +13,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="20">
-            <TextBlock Text="Smart Filter:" FontWeight="Black"/>
-            <TextBox KeyDown="textBox_KeyDown" Width="300" Height="24" x:Name="searchtextBox"/>
-            <TextBlock Text="Search Vector:" FontWeight="Black" Padding="10,0,0,0"/>
-            <TextBox KeyDown="vectortextBox_KeyDown" Text="0.55"  Width="150" Height="24" x:Name="vectortextBox"/>
+            <TextBlock Text="Smart Filter:" Margin="0,0,5,0" FontWeight="Black"/>
+            <TextBox KeyDown="textBox_KeyDown" Width="300" x:Name="searchtextBox"/>
+            <TextBlock Text="Search Vector:" Margin="0,0,5,0" FontWeight="Black" Padding="10,0,0,0"/>
+            <syncfusion:DoubleTextBox Value="0.55"  Width="150" x:Name="vectortextBox" ValueChanged="vectortextBox_ValueChanged"/>
         </StackPanel>
-        <syncfusion:SfDataGrid Margin="30,20, 30, 20" Grid.Row="1" x:Name="grid" ColumnSizer="Star" AutoGenerateColumns="True" HeaderRowHeight="28"/>
+        <syncfusion:SfDataGrid Margin="30,0, 30, 20" Grid.Row="1" x:Name="grid" ColumnSizer="Star" AutoGenerateColumns="True" HeaderRowHeight="28"/>
         
     </Grid>
 </Window>
